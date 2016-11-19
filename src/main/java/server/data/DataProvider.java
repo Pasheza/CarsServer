@@ -17,6 +17,9 @@ public class DataProvider {
     @NotNull
     private static final Logger log = LogManager.getLogger(DataProvider.class);
 
+
+    @GET
+    @Path("/")
     public Response getTests(@QueryParam("number") int num){
         if (num <= 0)
         {

@@ -18,6 +18,6 @@ public class TestsContainer {
 
     public static ArrayList<TestTemplate> getTests(int N){
         List<TestTemplate> allTests = testsDao.getAll();
-        return new ArrayList<>(allTests);
+        return new ArrayList<TestTemplate>(allTests);
     }
 }

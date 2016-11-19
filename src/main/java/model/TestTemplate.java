@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
@@ -17,22 +18,45 @@ import model.TestTemplate;
  */
 
 @Entity
-@Table(name = "tests")
+@Table(name = "TestTemplate")
 public class TestTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column
-    private ArrayList<Image> images;
+    private ArrayList<BufferedImage> image;
     @Column
     private ArrayList<String> variants;
     @Column
     private int correctVariant;
 
+
+
     private static Gson gson = new GsonBuilder()
             .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
             .excludeFieldsWithoutExposeAnnotation()
             .create();
+
+    public TestTemplate SetImage(ArrayList<BufferedImage> img){
+        Gson gson = new Gson();
+
+        image = img;//gson.toJson(img);
+        return this;
+    }
+
+    public TestTemplate SetVariants(ArrayList<String> variants, int correctNumber){
+        if (correctNumber<4){
+            this.variants = variants;
+            this.correctVariant = correctNumber;
+        }
+        return this;
+    }
+
+//    public BufferedImage getImage(){
+//        Gson gson = new Gson();
+//        BufferedImage img = gson.fromJson(this.image, BufferedImage.class);
+//        return img;
+//    }
 
     public static String writeJSON(ArrayList<TestTemplate> toConvert){
         return gson.toJson(toConvert);
