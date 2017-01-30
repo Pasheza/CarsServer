@@ -24,7 +24,7 @@ public class TestTemplate {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column
-    private ArrayList<BufferedImage> image;
+    private String adress;
     @Column
     private ArrayList<String> variants;
     @Column
@@ -37,10 +37,10 @@ public class TestTemplate {
             .excludeFieldsWithoutExposeAnnotation()
             .create();
 
-    public TestTemplate SetImage(ArrayList<BufferedImage> img){
+    public TestTemplate SetImage(String imageAdress){
         Gson gson = new Gson();
 
-        image = img;//gson.toJson(img);
+        adress = imageAdress;//gson.toJson(img);
         return this;
     }
 

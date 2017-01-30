@@ -20,4 +20,9 @@ public class TestsContainer {
         List<TestTemplate> allTests = testsDao.getAll();
         return new ArrayList<TestTemplate>(allTests);
     }
+    public static TestTemplate GetRandomOne(){
+        List<TestTemplate> allTests = testsDao.getAll();
+        Random random = new Random();
+        return allTests.get(random.nextInt(allTests.size()));
+    }
 }
